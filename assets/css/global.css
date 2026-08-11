@@ -1,0 +1,35 @@
+@import url("https://googleapis.com");
+
+:root {
+  --color-primary: #0a1931;
+  --color-secondary: #15305b;
+  --color-accent: #c5a85a;
+  --color-accent-hover: #a38741;
+
+  --color-bg: #f4f6f9;
+  --color-card: #ffffff;
+  --color-text-dark: #1f2937;
+  --color-text-light: #4b5563;
+  --color-border: #d1d5db;
+
+  --font-main: "Inter", sans-serif;
+  --radius-md: 8px;
+  --transition-fast: 0.2s ease-in-out;
+}
+
+* {
+  border: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+}
