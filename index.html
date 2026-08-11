@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpTi - Central de Atendimento</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+
+    <main class="ticket-container">
+
+        <header class="ticket-header">
+            <h1>HelpTi</h1>
+            <p>Abertura de chamado interno</p>
+        </header>
+
+        <form action="" id="form-chamado" class="ticket-form">
+            <!-- Campo: Nome do Funcionário -->
+            <div class="form-group">
+                <label for="input-nome">Seu Nome</label>
+                <input type="text" id="input-nome" required placeholder="Ex: João Carrantos" autocomplete="name">
+            </div>
+
+            <!-- Campo: Setor Corporativo -->
+            <div class="form-group">
+                <label for="select-setor">Setor</label>
+                <select id="select-setor" required>
+                    <option value="" disabled selected>Selecione seu setor...</option>
+                    <option value="diretoria">Diretoria</option>
+                    <option value="financeiro">Financeiro / Administrativo</option>
+                    <option value="operacoes">Operações / Logística</option>
+                    <option value="comercial">Comercial / Vendas</option>
+                </select>
+            </div>
+
+            <!-- Campo: Categoria/Tipo do Incidente -->
+            <div class="form-group">
+                <label for="select-categoria">O que está com problema?</label>
+                <select id="select-categoria" required>
+                    <option value="" disabled selected>Selecione uma categoria...</option>
+                    <option value="internet">Internet / Rede de Computadores</option>
+                    <option value="computador">Hardware (Computador / Monitor)</option>
+                    <option value="impressora">Impressora / Periféricos</option>
+                    <option value="sistemas">Sistemas / E-mail / Senhas</option>
+                </select>
+            </div>
+
+            <!-- Campo: Descrição Detalhada -->
+            <div class="form-group">
+                <label for="textarea-descricao">Descrição do Problema</label>
+                <textarea id="textarea-descricao" rows="4" required placeholder="Descreva detalhadamente o erro ou o que está acontecendo..."></textarea>
+            </div>
+
+            <!-- Botão de submissão do ticket -->
+            <footer class="form-actions">
+                <button type="submit" class="btn-submit">Enviar Chamado</button>
+            </footer>
+
+        </form>
+    </main>
+
+</body>
+
+</html>
