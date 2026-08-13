@@ -22,6 +22,14 @@
   margin-bottom: 0.25rem;
 }
 
+.ticket-logo {
+  display: block;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto 1.25rem;
+  object-fit: contain;
+}
+
 .ticket-header p {
   color: var(--color-text-light);
   font-size: 0.95rem;
