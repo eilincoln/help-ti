@@ -66,12 +66,12 @@
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--color-secondary);
-  box-shadow: 0 0 0 3px rgba(21, 48, 91, 0.15); /* Glow sutil em azul médio */
+  box-shadow: 0 0 0 3px rgba(21, 48, 91, 0.15);
 }
 
 /* Ajuste específico para o campo de texto grande */
 .form-group textarea {
-  resize: vertical; /* Impede o usuário de quebrar o layout esticando para os lados */
+  resize: vertical;
   min-height: 100px;
 }
 
@@ -84,7 +84,7 @@
   width: 100%;
   padding: 0.85rem;
   background-color: var(--color-accent);
-  color: var(--color-primary); /* Texto em azul escuro sobre o fundo dourado */
+  color: var(--color-primary);
   border: none;
   border-radius: 6px;
   font-family: var(--font-main);
@@ -102,5 +102,5 @@
 }
 
 .btn-submit:active {
-  transform: scale(0.98); /* Efeito de clique físico afundando levemente */
+  transform: scale(0.98);
 }
