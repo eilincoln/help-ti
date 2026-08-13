@@ -1,0 +1,106 @@
+/* container do form */
+.ticket-container {
+  background-color: var(--color-card);
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(10, 25, 49, 0.08);
+  border-top: 4px solid var(--color-accent);
+}
+
+.ticket-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ticket-header h1 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.ticket-header p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+/* Estrutura dos blocos de entrada */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  color: var(--color-text-dark);
+  font-size: 0.87rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* estilização padrão dos inputs, selects e textarea */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* Estado de Foco (Acessibilidade e Feedback Visual) */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(21, 48, 91, 0.15); /* Glow sutil em azul médio */
+}
+
+/* Ajuste específico para o campo de texto grande */
+.form-group textarea {
+  resize: vertical; /* Impede o usuário de quebrar o layout esticando para os lados */
+  min-height: 100px;
+}
+
+/* Botão de Envio */
+.form-actions {
+  margin-top: 1.75rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--color-accent);
+  color: var(--color-primary); /* Texto em azul escuro sobre o fundo dourado */
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform 0.1s ease;
+}
+
+/* Efeitos de Interação no Botão */
+.btn-submit:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-submit:active {
+  transform: scale(0.98); /* Efeito de clique físico afundando levemente */
+}
