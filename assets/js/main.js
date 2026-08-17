@@ -1,27 +1,38 @@
 /*
-    Lógica central do fluxo do formulário
-*/
-
+ HelpTI - Central de Atendimento
+ */
+const supabase = supabase.createClient(
+  SUPABASE_CONFIG.url,
+  SUPABASE_CONFIG.apiKey,
+);
 const formChamado = document.getElementById("form-chamado");
 
-formChamado.addEventListener("submit", function (event) {
+formChamado.addEventListener("submit", async function (event) {
   event.preventDefault();
-
-  const dadosChamado = {
+  const novoChamado = {
     nome: document.getElementById("input-nome").value,
     setor: document.getElementById("select-setor").value,
     categoria: document.getElementById("select-categoria").value,
     descricao: document.getElementById("textarea-descricao").value,
-    status: "Pendendente",
-    dataAbertura: new Date().toLocaleDateString("pt-br"),
+    status: "Pendente",
   };
 
-  // Apenas para teste, caso precise
-  console.log("Objeto foi para o banco de dados: ", dadosChamado);
+  try {
+    const { data, error } = await supabase
+      .from("chamados")
+      .insert([novoChamado]);
 
-  alert(
-    `Obrigado, ${dadosChamado.nome}! Seu chamado para a categoria de "${dadosChamado.categoria}" foi aberto`,
-  );
+    if (error) throw error;
 
-  formChamado.reset();
+    alert(
+      `Obrigado, ${novoChamado.nome}! Seu chamado foi registrado com sucesso em nossa nuvem de TI.`,
+    );
+
+    formChamado.reset();
+  } catch (error) {
+    console.error("Erro crítico na comunicação com o banco de dados:", error);
+    alert(
+      "Ocorreu um erro ao enviar seu chamado para o servidor. Por favor, tente novamente.",
+    );
+  }
 });
