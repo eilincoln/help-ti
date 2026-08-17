@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HelpTi - Central de Atendimento</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <title>HelpTI - Central de Atendimento</title>
+    <!-- Nosso CSS modular que você já criou e está lindo -->
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
@@ -14,18 +15,16 @@
 
         <header class="ticket-header">
             <img src="assets/images/logo-carrantos.png" alt="Logotipo do Grupo Carrantos" class="ticket-logo">
-            <!-- <h1>HelpTi</h1> -->
-            <p>Abertura de chamado interno</p>
+            <p>Abertura de Chamado Interno</p>
         </header>
 
-        <form action="" id="form-chamado" class="ticket-form">
-            <!-- Campo: Nome do Funcionário -->
+        <form id="form-chamado" class="ticket-form">
+
             <div class="form-group">
                 <label for="input-nome">Seu Nome</label>
                 <input type="text" id="input-nome" required placeholder="Ex: João Carrantos" autocomplete="name">
             </div>
 
-            <!-- Campo: Setor Corporativo -->
             <div class="form-group">
                 <label for="select-setor">Setor</label>
                 <select id="select-setor" required>
@@ -37,7 +36,6 @@
                 </select>
             </div>
 
-            <!-- Campo: Categoria/Tipo do Incidente -->
             <div class="form-group">
                 <label for="select-categoria">O que está com problema?</label>
                 <select id="select-categoria" required>
@@ -49,22 +47,22 @@
                 </select>
             </div>
 
-            <!-- Campo: Descrição Detalhada -->
             <div class="form-group">
                 <label for="textarea-descricao">Descrição do Problema</label>
-                <textarea id="textarea-descricao" rows="4" required placeholder="Descreva detalhadamente o erro ou o que está acontecendo..."></textarea>
+                <textarea id="textarea-descricao" rows="4" required placeholder="Descreva detalhadamente o erro..."></textarea>
             </div>
 
-            <!-- Botão de submissão do ticket -->
             <footer class="form-actions">
                 <button type="submit" class="btn-submit">Enviar Chamado</button>
             </footer>
 
         </form>
+
     </main>
 
-    <script src="assets/js/main.js" defer></script>
-
+    <script src="https://jsdelivr.net"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
