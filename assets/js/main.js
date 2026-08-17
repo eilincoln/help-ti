@@ -1,15 +1,10 @@
-/*
- HelpTI - Central de Atendimento
- */
-const supabase = supabase.createClient(
-  SUPABASE_CONFIG.url,
-  SUPABASE_CONFIG.apiKey,
-);
 const formChamado = document.getElementById("form-chamado");
 
-formChamado.addEventListener("submit", async function (event) {
+formChamado.addEventListener("submit", function (event) {
   event.preventDefault();
+
   const novoChamado = {
+    id: Date.now(),
     nome: document.getElementById("input-nome").value,
     setor: document.getElementById("select-setor").value,
     categoria: document.getElementById("select-categoria").value,
@@ -17,22 +12,12 @@ formChamado.addEventListener("submit", async function (event) {
     status: "Pendente",
   };
 
-  try {
-    const { data, error } = await supabase
-      .from("chamados")
-      .insert([novoChamado]);
+  let listaDeChamados = JSON.parse(localStorage.getItem("banco_help_ti")) || [];
 
-    if (error) throw error;
+  listaDeChamados.push(novoChamado);
 
-    alert(
-      `Obrigado, ${novoChamado.nome}! Seu chamado foi registrado com sucesso em nossa nuvem de TI.`,
-    );
+  localStorage.setItem("banco_help_ti", JSON.stringify(listaDeChamados));
 
-    formChamado.reset();
-  } catch (error) {
-    console.error("Erro crítico na comunicação com o banco de dados:", error);
-    alert(
-      "Ocorreu um erro ao enviar seu chamado para o servidor. Por favor, tente novamente.",
-    );
-  }
+  alert(`Sucesso! Chamado de ${novoChamado.nome} foi salvo localmente.`);
+  formChamado.reset();
 });
