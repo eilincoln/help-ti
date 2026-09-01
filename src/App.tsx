@@ -1,13 +1,27 @@
 // src/App.tsx
+import { useState } from "react";
 import { TicketForm } from "./components/TicketForm";
-import type { CreateTicketDTO } from "./types/ticket";
+import { TicketSuccess } from "./components/TicketSuccess";
+import { generateTicketProtocol } from "./utils/formatters";
+import type { CreateTicketDTO, Ticket } from "./types/ticket";
 
 export function App(): React.ReactElement {
+  const [createdTicket, setCreatedTicket] = useState<Ticket | null>(null);
+
   function handleCreateTicket(data: CreateTicketDTO) {
-    console.log("Dados do chamado recebidos:", data);
-    alert(
-      `Chamado recebido com sucesso para o solicitante: ${data.requesterName}`,
-    );
+    const newTicket: Ticket = {
+      ...data,
+      id: crypto.randomUUID(),
+      protocol: generateTicketProtocol(),
+      status: "aberto",
+      createdAt: new Date().toISOString(),
+    };
+
+    setCreatedTicket(newTicket);
+  }
+
+  function handleReset() {
+    setCreatedTicket(null);
   }
 
   return (
@@ -17,7 +31,11 @@ export function App(): React.ReactElement {
         <p>Central de Atendimento e Suporte de TI</p>
       </header>
       <main>
-        <TicketForm onSubmitTicket={handleCreateTicket} />
+        {createdTicket ? (
+          <TicketSuccess ticket={createdTicket} onReset={handleReset} />
+        ) : (
+          <TicketForm onSubmitTicket={handleCreateTicket} />
+        )}
       </main>
     </div>
   );
