@@ -1,4 +1,3 @@
-// src/components/TicketSuccess.tsx
 import type { Ticket } from "../types/ticket";
 import "./TicketSuccess.css";
 
