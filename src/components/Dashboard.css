@@ -1,0 +1,116 @@
+/* src/components/Dashboard.css */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dashboard-message {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem 1rem;
+}
+
+.dashboard-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Números de destaque */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.stat-tile {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-tile dt {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.stat-tile dd {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Listas com barras */
+.bar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.bar-list {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.bar-list h3 {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.bar-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.bar-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  height: 10px;
+  background-color: var(--color-background);
+  border-radius: 4px;
+}
+
+/* Começa reta no eixo e arredonda só a ponta do dado */
+.bar-fill {
+  display: block;
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: 0 4px 4px 0;
+}
+
+.bar-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  min-width: 4.5rem;
+}
+
+.bar-value small {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.bar-row:hover .bar-fill {
+  background-color: var(--color-accent-hover);
+}

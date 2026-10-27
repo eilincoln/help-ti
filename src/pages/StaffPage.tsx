@@ -4,10 +4,14 @@ import { supabase } from "../lib/supabase";
 import { useSession } from "../hooks/useSession";
 import { LoginForm } from "../components/LoginForm";
 import { TicketList } from "../components/TicketList";
+import { Dashboard } from "../components/Dashboard";
 import "./StaffPage.css";
+
+type PanelView = "fila" | "resultados";
 
 export function StaffPage() {
   const session = useSession();
+  const [panelView, setPanelView] = useState<PanelView>("fila");
   const userId = session?.user.id;
   // Guarda de qual usuário é a resposta, para não reaproveitar
   // o resultado de um login anterior
@@ -55,7 +59,9 @@ export function StaffPage() {
   return (
     <section className="staff-panel">
       <header className="staff-panel-header">
-        <h2>Fila de Chamados</h2>
+        <h2>
+          {panelView === "fila" ? "Fila de Chamados" : "Resultados"}
+        </h2>
         <div className="staff-panel-user">
           <span>{session.user.email}</span>
           <button type="button" className="staff-logout" onClick={handleLogout}>
@@ -63,7 +69,25 @@ export function StaffPage() {
           </button>
         </div>
       </header>
-      <TicketList />
+      <nav className="ticket-tabs" aria-label="Seções do painel">
+        <button
+          type="button"
+          className="ticket-tab"
+          aria-pressed={panelView === "fila"}
+          onClick={() => setPanelView("fila")}
+        >
+          Chamados
+        </button>
+        <button
+          type="button"
+          className="ticket-tab"
+          aria-pressed={panelView === "resultados"}
+          onClick={() => setPanelView("resultados")}
+        >
+          Resultados
+        </button>
+      </nav>
+      {panelView === "fila" ? <TicketList /> : <Dashboard />}
     </section>
   );
 }
