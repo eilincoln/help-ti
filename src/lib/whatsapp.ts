@@ -8,7 +8,7 @@ const itWhatsAppNumber = import.meta.env.VITE_WHATSAPP_NUMBER?.replace(
   "",
 );
 
-// Monta o link wa.me com a mensagem já escrita.
+// Monta o link do WhatsApp com a mensagem já escrita.
 // Sem número configurado, devolve null e a tela esconde o botão.
 export function buildWhatsAppLink(ticket: SubmittedTicket): string | null {
   if (!itWhatsAppNumber) return null;
@@ -28,5 +28,11 @@ export function buildWhatsAppLink(ticket: SubmittedTicket): string | null {
     trackUrl,
   ].join("\n");
 
-  return `https://wa.me/${itWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+  // api.whatsapp.com direto, e não wa.me: o redirecionamento do wa.me
+  // troca os emojis por "�" no meio do caminho.
+  const params = new URLSearchParams({
+    phone: itWhatsAppNumber,
+    text: message,
+  });
+  return `https://api.whatsapp.com/send?${params}`;
 }
