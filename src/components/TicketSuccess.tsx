@@ -1,4 +1,5 @@
 import type { SubmittedTicket } from "../types/ticket";
+import { buildWhatsAppLink } from "../lib/whatsapp";
 import "./TicketSuccess.css";
 
 interface TicketSuccessProps {
@@ -7,6 +8,8 @@ interface TicketSuccessProps {
 }
 
 export function TicketSuccess({ ticket, onReset }: TicketSuccessProps) {
+  const whatsAppLink = buildWhatsAppLink(ticket);
+
   return (
     <section className="success-container" aria-live="polite">
       <div className="success-badge">✓</div>
@@ -51,6 +54,17 @@ export function TicketSuccess({ ticket, onReset }: TicketSuccessProps) {
       >
         Acompanhar este chamado
       </a>
+
+      {whatsAppLink && (
+        <a
+          className="whatsapp-btn"
+          href={whatsAppLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Avisar o TI no WhatsApp
+        </a>
+      )}
 
       <button type="button" className="reset-btn" onClick={onReset}>
         Abrir Outro Chamado

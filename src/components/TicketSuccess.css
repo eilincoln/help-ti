@@ -142,7 +142,27 @@
   background-color: var(--color-accent-hover);
 }
 
+/* Verde escuro do WhatsApp: o verde claro (#25D366) com texto branco
+   não tem contraste suficiente para leitura (WCAG). */
+.whatsapp-btn {
+  display: inline-block;
+  background-color: #075e54;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #054d45;
+}
+
 .track-btn:focus-visible,
+.whatsapp-btn:focus-visible,
 .reset-btn:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
