@@ -26,8 +26,8 @@
 .success-badge {
   width: 56px;
   height: 56px;
-  background-color: #10b981;
-  color: #ffffff;
+  background-color: #4ade80;
+  color: var(--color-on-accent);
   font-size: 1.75rem;
   font-weight: bold;
   border-radius: 50%;
@@ -39,7 +39,7 @@
 
 .success-container h2 {
   font-size: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
   margin-bottom: 0.25rem;
 }
 
@@ -72,7 +72,7 @@
 .protocol-box strong {
   font-size: 1.5rem;
   color: var(--color-accent);
-  font-family: monospace;
+  font-family: var(--font-mono);
 }
 
 .summary-list {
@@ -128,7 +128,7 @@
 .track-btn {
   display: inline-block;
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;

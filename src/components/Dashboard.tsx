@@ -42,7 +42,11 @@ export function Dashboard() {
 
   return (
     <div className="dashboard">
-      <div className="ticket-tabs" role="group" aria-label="Período">
+      <div
+        className="ticket-tabs ticket-tabs-sub"
+        role="group"
+        aria-label="Período"
+      >
         {PERIOD_OPTIONS.map((option) => (
           <button
             key={option}

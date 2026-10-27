@@ -9,36 +9,38 @@
   white-space: nowrap;
 }
 
+/* Tema escuro: fundo translúcido da cor + texto claro da mesma cor.
+   "Alta" é laranja para não se confundir com o âmbar da marca. */
 .priority-baixa {
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: rgb(161 161 170 / 0.15);
+  color: #d4d4d8;
 }
 .priority-media {
-  background-color: #e0f2fe;
-  color: #0369a1;
+  background-color: rgb(56 189 248 / 0.15);
+  color: #7dd3fc;
 }
 .priority-alta {
-  background-color: #fef3c7;
-  color: #b45309;
+  background-color: rgb(251 146 60 / 0.15);
+  color: #fdba74;
 }
 .priority-urgente {
-  background-color: #fee2e2;
-  color: #b91c1c;
+  background-color: rgb(248 113 113 / 0.15);
+  color: #fca5a5;
 }
 
 .status-aberto {
-  background-color: #dbeafe;
-  color: #1d4ed8;
+  background-color: rgb(96 165 250 / 0.15);
+  color: #93c5fd;
 }
 .status-em_andamento {
-  background-color: #fef3c7;
-  color: #b45309;
+  background-color: rgb(251 191 36 / 0.15);
+  color: #fcd34d;
 }
 .status-aguardando {
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: rgb(161 161 170 / 0.15);
+  color: #d4d4d8;
 }
 .status-resolvido {
-  background-color: #dcfce7;
-  color: #15803d;
+  background-color: rgb(74 222 128 / 0.15);
+  color: #86efac;
 }

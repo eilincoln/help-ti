@@ -12,7 +12,7 @@
 
 .ticket-form-header h2 {
   font-size: 1.25rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
   margin-bottom: 0.25rem;
 }
 
@@ -54,7 +54,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
 }
 
 .form-row {
@@ -71,7 +71,7 @@
 
 .submit-btn {
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
   font-size: 1rem;
   font-weight: 600;
   padding: 0.875rem 1.5rem;
@@ -93,8 +93,8 @@
 
 .form-error {
   font-size: 0.875rem;
-  color: #b91c1c;
-  background-color: #fee2e2;
+  color: var(--color-danger-text);
+  background-color: var(--color-danger-bg);
   padding: 0.625rem 0.75rem;
   border-radius: var(--radius-md);
 }

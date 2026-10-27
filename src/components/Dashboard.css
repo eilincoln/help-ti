@@ -37,9 +37,10 @@
 }
 
 .stat-tile dd {
+  font-family: var(--font-heading);
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-heading);
   font-variant-numeric: tabular-nums;
 }
 
@@ -60,7 +61,7 @@
 
 .bar-list h3 {
   font-size: 0.95rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
   margin-bottom: 0.75rem;
 }
 

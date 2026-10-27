@@ -87,7 +87,11 @@ export function TicketList() {
 
   return (
     <div className="ticket-list-wrapper">
-      <div className="ticket-tabs" role="group" aria-label="Filtrar chamados">
+      <div
+        className="ticket-tabs ticket-tabs-sub"
+        role="group"
+        aria-label="Filtrar chamados"
+      >
         <button
           type="button"
           className="ticket-tab"

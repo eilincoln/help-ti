@@ -1,3 +1,36 @@
+/* Fontes hospedadas no próprio site (sem Google Fonts: nenhum dado
+   do visitante vai para terceiros, ponto a favor na LGPD) */
+@font-face {
+  font-display: swap;
+  font-family: "Space Grotesk";
+  font-weight: 300 700; /* fonte variável: um arquivo, vários pesos */
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-weight: 400;
+  src: url("/fonts/inter-v20-latin-regular.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-weight: 500;
+  src: url("/fonts/inter-v20-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-weight: 600;
+  src: url("/fonts/inter-v20-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  src: url("/fonts/jetbrains-mono-latin-400.woff2") format("woff2");
+}
+
 /* Reset semântico e consistente */
 *,
 *::before,
@@ -8,22 +41,37 @@
 }
 
 :root {
-  --color-primary: #0f172a; /* Slate 900: base institucional */
-  --color-accent: #2563eb; /* Royal Blue: ações principais e botões */
-  --color-accent-hover: #1d4ed8; /* Blue 700: feedback de hover */
-  --color-background: #f8fafc; /* Slate 50: fundo limpo de alto contraste */
-  --color-surface: #ffffff; /* Fundo de cards e modais */
-  --color-text: #1e293b; /* Slate 800: leitura confortável */
-  --color-text-muted: #64748b; /* Slate 500: legendas e textos secundários */
-  --color-border: #e2e8f0; /* Linhas sutis de divisão */
+  /* Tema escuro único: o navegador também desenha inputs, selects
+     e barras de rolagem no modo escuro */
+  color-scheme: dark;
 
-  /* Tokens de Espaçamento e Tipografia */
-  --font-family:
-    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Grafite (mesma base zinc do portfólio) */
+  --color-background: #111113; /* fundo da página e dos campos */
+  --color-surface: #1f1f23; /* cards */
+  --color-border: #323238;
+  --color-heading: #fafafa; /* títulos e números de destaque */
+  --color-text: #e4e4e7;
+  --color-text-muted: #a1a1aa; /* 6,8:1 sobre os cards */
+
+  /* Âmbar: ações principais, foco e destaques */
+  --color-accent: #fbbf24;
+  --color-accent-hover: #fcd34d;
+  --color-accent-soft: rgb(251 191 36 / 0.18); /* anel de foco dos campos */
+  --color-on-accent: #111113; /* texto sobre âmbar: branco não teria contraste */
+
+  --color-danger-bg: rgb(248 113 113 / 0.12);
+  --color-danger-text: #fca5a5;
+
+  /* Tipografia */
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
   --radius-md: 8px;
   --radius-lg: 12px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  /* No escuro a sombra quase não aparece: a luz no topo da borda separa o card */
+  --shadow-sm:
+    inset 0 1px 0 rgb(255 255 255 / 0.04), 0 1px 2px rgb(0 0 0 / 0.4);
 }
 
 body {
@@ -32,6 +80,18 @@ body {
   color: var(--color-text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Botões não herdam a fonte da página por padrão (o navegador usa a dele) */
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
 }
 
 .app-container {
@@ -47,7 +107,7 @@ body {
 
 .main-header h1 {
   font-size: 2rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
 }
 
 .main-header p {

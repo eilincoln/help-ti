@@ -17,12 +17,20 @@
 }
 
 .ticket-tab[aria-pressed="true"] {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #ffffff;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .ticket-tab:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/* Abas de segundo nível (filtros dentro de uma seção): mais discretas,
+   para não competir com a navegação principal do painel */
+.ticket-tabs-sub .ticket-tab[aria-pressed="true"] {
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
