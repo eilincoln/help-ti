@@ -21,6 +21,12 @@ export interface CreateTicketDTO {
   description: string;
 }
 
+// O que quem abriu o chamado pode ver: os próprios dados + protocolo.
+// (Visitante anônimo não tem permissão de leitura no banco.)
+export interface SubmittedTicket extends CreateTicketDTO {
+  protocol: string;
+}
+
 // Interface completa do chamado como será gravado no banco de dados
 export interface Ticket extends CreateTicketDTO {
   id: string;

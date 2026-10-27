@@ -1,10 +1,6 @@
 // src/components/TicketForm.tsx
 import { useState, type FormEvent, type ChangeEvent } from "react";
-import type {
-  CreateTicketDTO,
-  TicketCategory,
-  TicketPriority,
-} from "../types/ticket";
+import type { CreateTicketDTO } from "../types/ticket";
 import "./TicketForm.css";
 
 interface TicketFormProps {

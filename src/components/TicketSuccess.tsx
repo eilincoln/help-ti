@@ -1,8 +1,8 @@
-import type { Ticket } from "../types/ticket";
+import type { SubmittedTicket } from "../types/ticket";
 import "./TicketSuccess.css";
 
 interface TicketSuccessProps {
-  ticket: Ticket;
+  ticket: SubmittedTicket;
   onReset: () => void;
 }
 
