@@ -9,6 +9,21 @@ const path = window.location.pathname;
 const isStaffArea = path.startsWith("/painel");
 const isTrackArea = path.startsWith("/consulta");
 
+// Topo de cada página: etiqueta + título + texto, no padrão do portfólio
+const PAGE_HERO = isStaffArea
+  ? { eyebrow: "área do TI", title: "Painel de chamados", lead: "" }
+  : isTrackArea
+    ? {
+        eyebrow: "acompanhar",
+        title: "Como está o seu chamado?",
+        lead: "Informe o protocolo e o primeiro nome usado na abertura.",
+      }
+    : {
+        eyebrow: "suporte de TI",
+        title: "Como o TI pode ajudar?",
+        lead: "Conte o que está acontecendo. Você recebe um protocolo para acompanhar o atendimento.",
+      };
+
 function CurrentPage() {
   if (isStaffArea) return <StaffPage />;
   if (isTrackArea) return <TrackTicketPage />;
@@ -16,20 +31,53 @@ function CurrentPage() {
 }
 
 export function App(): React.ReactElement {
+  const containerClass = `app-container${isStaffArea ? " is-wide" : ""}`;
+
   return (
-    <div className="app-container">
-      <header className="main-header">
-        <h1>HelpTI</h1>
-        <p>
-          {isStaffArea
-            ? "Painel da Equipe de TI"
-            : "Central de Atendimento e Suporte de TI"}
-        </p>
+    <>
+      <header className="topbar">
+        <div className={`${containerClass} topbar-inner`}>
+          <a className="brand" href="/">
+            <span className="brand-mark" aria-hidden="true">
+              TI
+            </span>
+            HelpTI
+          </a>
+          {!isStaffArea && (
+            <nav className="topbar-nav" aria-label="Principal">
+              <ul>
+                <li>
+                  <a href="/" aria-current={!isTrackArea ? "page" : undefined}>
+                    Abrir chamado
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/consulta"
+                    aria-current={isTrackArea ? "page" : undefined}
+                  >
+                    Acompanhar
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          )}
+        </div>
       </header>
-      <main>
-        <CurrentPage />
-      </main>
-    </div>
+
+      <div className="page-shell">
+        <div className={containerClass}>
+          <div className="page-hero">
+            <span className="eyebrow">{PAGE_HERO.eyebrow}</span>
+            <h1>{PAGE_HERO.title}</h1>
+            {PAGE_HERO.lead && <p className="lead">{PAGE_HERO.lead}</p>}
+          </div>
+          <main>
+            <CurrentPage />
+          </main>
+        </div>
+      </div>
+    </>
   );
 }
 

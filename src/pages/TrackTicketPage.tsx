@@ -47,11 +47,6 @@ export function TrackTicketPage() {
   return (
     <div className="track-page">
       <form className="ticket-form" onSubmit={handleSubmit}>
-        <header className="ticket-form-header">
-          <h2>Acompanhar Chamado</h2>
-          <p>Informe o protocolo e o primeiro nome usado na abertura.</p>
-        </header>
-
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="protocol">Protocolo</label>

@@ -40,11 +40,6 @@ export function TicketForm({
 
   return (
     <form className="ticket-form" onSubmit={handleSubmit} noValidate={false}>
-      <header className="ticket-form-header">
-        <h2>Abrir Novo Chamado</h2>
-        <p>Preencha os dados abaixo para registrar sua solicitação técnica.</p>
-      </header>
-
       {/* Campo: Nome do Solicitante */}
       <div className="form-group">
         <label htmlFor="requesterName">Seu Nome Completo *</label>

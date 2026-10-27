@@ -1,6 +1,25 @@
+import { useEffect } from "react";
+import confetti from "canvas-confetti";
 import type { SubmittedTicket } from "../types/ticket";
 import { buildWhatsAppLink } from "../lib/whatsapp";
 import "./TicketSuccess.css";
+
+// Tons de roxo da marca + branco e verde de "deu certo"
+const CONFETTI_COLORS = ["#8844ee", "#a674f5", "#9a5ef2", "#ffffff", "#86efac"];
+
+// Dois jatos, um de cada canto de baixo, em direção ao centro
+function celebrate() {
+  const shared = {
+    particleCount: 70,
+    spread: 60,
+    startVelocity: 55,
+    colors: CONFETTI_COLORS,
+    // Respeita quem pediu "reduzir movimento" no sistema
+    disableForReducedMotion: true,
+  };
+  confetti({ ...shared, angle: 60, origin: { x: 0, y: 0.9 } });
+  confetti({ ...shared, angle: 120, origin: { x: 1, y: 0.9 } });
+}
 
 interface TicketSuccessProps {
   ticket: SubmittedTicket;
@@ -9,6 +28,15 @@ interface TicketSuccessProps {
 
 export function TicketSuccess({ ticket, onReset }: TicketSuccessProps) {
   const whatsAppLink = buildWhatsAppLink(ticket);
+
+  useEffect(() => {
+    celebrate();
+    // Limpa os confetes se a tela sair antes de eles caírem. No modo de
+    // desenvolvimento o React monta 2x (StrictMode): sem isso, seriam 4 jatos.
+    return () => {
+      confetti.reset();
+    };
+  }, []);
 
   return (
     <section className="success-container" aria-live="polite">

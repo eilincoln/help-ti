@@ -12,14 +12,19 @@
   font-size: 0.875rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   cursor: pointer;
+}
+
+.ticket-tab:hover {
+  border-color: var(--color-accent);
+  color: var(--color-heading);
 }
 
 .ticket-tab[aria-pressed="true"] {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-on-accent);
+  color: var(--color-on-action);
 }
 
 .ticket-tab:focus-visible {
@@ -30,7 +35,7 @@
 /* Abas de segundo nível (filtros dentro de uma seção): mais discretas,
    para não competir com a navegação principal do painel */
 .ticket-tabs-sub .ticket-tab[aria-pressed="true"] {
-  background-color: var(--color-surface);
+  background-color: var(--color-accent-soft);
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-heading);
 }
