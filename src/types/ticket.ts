@@ -35,3 +35,17 @@ export interface Ticket extends CreateTicketDTO {
   createdAt: string;
   resolvedAt?: string;
 }
+
+// Observação registrada pelo técnico no histórico do chamado
+export interface TicketNote {
+  id: string;
+  ticketId: string;
+  body: string;
+  isPublic: boolean;
+  createdAt: string;
+}
+
+// Chamado como o técnico vê no painel: dados + histórico
+export interface StaffTicket extends Ticket {
+  notes: TicketNote[];
+}

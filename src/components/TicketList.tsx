@@ -1,13 +1,14 @@
 // src/components/TicketList.tsx
 import { useEffect, useState, type ChangeEvent } from "react";
 import { fetchTickets, updateTicketStatus } from "../lib/tickets";
-import type { Ticket, TicketStatus } from "../types/ticket";
+import type { StaffTicket, TicketNote, TicketStatus } from "../types/ticket";
 import {
   CATEGORY_LABELS,
   PRIORITY_LABELS,
   STATUS_LABELS,
   formatDateTime,
 } from "../utils/labels";
+import { TicketNotes } from "./TicketNotes";
 import "./TicketList.css";
 
 type View = "fila" | "resolvidos";
@@ -16,7 +17,7 @@ type View = "fila" | "resolvidos";
 const STATUS_OPTIONS = Object.keys(STATUS_LABELS) as TicketStatus[];
 
 export function TicketList() {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [tickets, setTickets] = useState<StaffTicket[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [view, setView] = useState<View>("fila");
@@ -34,7 +35,7 @@ export function TicketList() {
   }, []);
 
   async function handleStatusChange(
-    ticket: Ticket,
+    ticket: StaffTicket,
     e: ChangeEvent<HTMLSelectElement>,
   ) {
     const status = e.target.value as TicketStatus;
@@ -55,6 +56,17 @@ export function TicketList() {
     } finally {
       setSavingId(null);
     }
+  }
+
+  // Acrescenta a observação nova no histórico do chamado certo
+  function handleNoteAdded(note: TicketNote) {
+    setTickets((prev) =>
+      prev.map((item) =>
+        item.id === note.ticketId
+          ? { ...item, notes: [...item.notes, note] }
+          : item,
+      ),
+    );
   }
 
   if (isLoading)
@@ -162,6 +174,11 @@ export function TicketList() {
                     <span className="ticket-card-saving">Salvando...</span>
                   )}
                 </div>
+                <TicketNotes
+                  ticketId={ticket.id}
+                  notes={ticket.notes}
+                  onNoteAdded={handleNoteAdded}
+                />
               </article>
             </li>
           ))}

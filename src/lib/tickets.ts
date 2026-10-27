@@ -1,12 +1,21 @@
 import { supabase } from "./supabase";
 import type {
-  Ticket,
+  StaffTicket,
   TicketCategory,
+  TicketNote,
   TicketPriority,
   TicketStatus,
 } from "../types/ticket";
 
-// Formato da linha como vem do Postgres (snake_case)
+// Formato das linhas como vêm do Postgres (snake_case)
+interface TicketNoteRow {
+  id: string;
+  ticket_id: string;
+  body: string;
+  is_public: boolean;
+  created_at: string;
+}
+
 interface TicketRow {
   id: string;
   protocol: string;
@@ -18,10 +27,26 @@ interface TicketRow {
   status: TicketStatus;
   created_at: string;
   resolved_at: string | null;
+  ticket_notes: TicketNoteRow[];
 }
 
+// Traz o chamado e, pela chave estrangeira, as observações dele
+// em uma única requisição (o PostgREST faz o "join")
+const TICKET_WITH_NOTES =
+  "*, ticket_notes(id, ticket_id, body, is_public, created_at)";
+
 // Converte do formato do banco para o formato do front (camelCase)
-function mapTicketRow(row: TicketRow): Ticket {
+function mapNoteRow(row: TicketNoteRow): TicketNote {
+  return {
+    id: row.id,
+    ticketId: row.ticket_id,
+    body: row.body,
+    isPublic: row.is_public,
+    createdAt: row.created_at,
+  };
+}
+
+function mapTicketRow(row: TicketRow): StaffTicket {
   return {
     id: row.id,
     protocol: row.protocol,
@@ -33,14 +58,17 @@ function mapTicketRow(row: TicketRow): Ticket {
     status: row.status,
     createdAt: row.created_at,
     resolvedAt: row.resolved_at ?? undefined,
+    notes: row.ticket_notes
+      .map(mapNoteRow)
+      .sort((a, b) => a.createdAt.localeCompare(b.createdAt)),
   };
 }
 
 // Só retorna dados para técnicos: a RLS filtra no banco
-export async function fetchTickets(): Promise<Ticket[]> {
+export async function fetchTickets(): Promise<StaffTicket[]> {
   const { data, error } = await supabase
     .from("tickets")
-    .select("*")
+    .select(TICKET_WITH_NOTES)
     .order("created_at", { ascending: false })
     .returns<TicketRow[]>();
 
@@ -52,14 +80,29 @@ export async function fetchTickets(): Promise<Ticket[]> {
 export async function updateTicketStatus(
   id: string,
   status: TicketStatus,
-): Promise<Ticket> {
+): Promise<StaffTicket> {
   const { data, error } = await supabase
     .from("tickets")
     .update({ status })
     .eq("id", id)
-    .select("*")
+    .select(TICKET_WITH_NOTES)
     .single<TicketRow>();
 
   if (error) throw error;
   return mapTicketRow(data);
+}
+
+export async function addTicketNote(
+  ticketId: string,
+  body: string,
+  isPublic: boolean,
+): Promise<TicketNote> {
+  const { data, error } = await supabase
+    .from("ticket_notes")
+    .insert({ ticket_id: ticketId, body: body.trim(), is_public: isPublic })
+    .select("id, ticket_id, body, is_public, created_at")
+    .single<TicketNoteRow>();
+
+  if (error) throw error;
+  return mapNoteRow(data);
 }
