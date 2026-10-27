@@ -47,3 +47,19 @@ export async function fetchTickets(): Promise<Ticket[]> {
   if (error) throw error;
   return data.map(mapTicketRow);
 }
+
+// Devolve o chamado atualizado: o resolved_at vem do trigger no banco
+export async function updateTicketStatus(
+  id: string,
+  status: TicketStatus,
+): Promise<Ticket> {
+  const { data, error } = await supabase
+    .from("tickets")
+    .update({ status })
+    .eq("id", id)
+    .select("*")
+    .single<TicketRow>();
+
+  if (error) throw error;
+  return mapTicketRow(data);
+}
