@@ -53,9 +53,19 @@ export function OpenTicketPage() {
     setCreatedTicket(null);
   }
 
-  return createdTicket ? (
-    <TicketSuccess ticket={createdTicket} onReset={handleReset} />
-  ) : (
-    <TicketForm onSubmitTicket={handleCreateTicket} isLoading={isSubmitting} />
+  if (createdTicket) {
+    return <TicketSuccess ticket={createdTicket} onReset={handleReset} />;
+  }
+
+  return (
+    <>
+      <TicketForm
+        onSubmitTicket={handleCreateTicket}
+        isLoading={isSubmitting}
+      />
+      <p className="page-link">
+        Já abriu um chamado? <a href="/consulta">Acompanhe o andamento</a>
+      </p>
+    </>
   );
 }

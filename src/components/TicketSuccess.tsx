@@ -42,6 +42,16 @@ export function TicketSuccess({ ticket, onReset }: TicketSuccessProps) {
         </div>
       </div>
 
+      <p className="success-track-hint">
+        Guarde o protocolo. Para acompanhar, use ele e o seu primeiro nome.
+      </p>
+      <a
+        className="track-btn"
+        href={`/consulta?protocolo=${encodeURIComponent(ticket.protocol)}`}
+      >
+        Acompanhar este chamado
+      </a>
+
       <button type="button" className="reset-btn" onClick={onReset}>
         Abrir Outro Chamado
       </button>

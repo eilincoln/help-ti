@@ -53,3 +53,20 @@ body {
 .main-header p {
   color: var(--color-text-muted);
 }
+
+/* Link de navegação entre telas públicas */
+.page-link {
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.page-link a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.page-link a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

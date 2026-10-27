@@ -49,3 +49,13 @@ export interface TicketNote {
 export interface StaffTicket extends Ticket {
   notes: TicketNote[];
 }
+
+// O que a consulta pública devolve: sem nome, setor ou descrição
+export interface PublicTicketStatus {
+  protocol: string;
+  category: TicketCategory;
+  status: TicketStatus;
+  createdAt: string;
+  resolvedAt?: string;
+  notes: { body: string; createdAt: string }[];
+}

@@ -10,3 +10,9 @@ export function generateTicketProtocol(): string {
   ).join("");
   return `#TI-${year}-${randomCode}`;
 }
+
+// Aceita "ti-2026-ab12", "#TI-2026-AB12 " etc. e devolve "#TI-2026-AB12"
+export function normalizeProtocol(value: string): string {
+  const clean = value.trim().toUpperCase().replace(/^#/, "");
+  return `#${clean}`;
+}

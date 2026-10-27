@@ -118,3 +118,32 @@
   background-color: var(--color-background);
   border-color: var(--color-text-muted);
 }
+
+.success-track-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.track-btn {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  transition: background-color 0.2s;
+}
+
+.track-btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.track-btn:focus-visible,
+.reset-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

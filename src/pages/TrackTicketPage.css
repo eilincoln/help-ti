@@ -1,0 +1,87 @@
+/* src/pages/TrackTicketPage.css */
+.track-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.track-result {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.track-result-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.track-result-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.track-result-protocol {
+  font-size: 1.25rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: var(--color-primary);
+}
+
+.track-result-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  font-size: 0.875rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.track-result-details dt {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.track-result-details dd {
+  font-weight: 600;
+}
+
+.track-result-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+.track-result-empty {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.track-timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.track-timeline time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.track-timeline p {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
