@@ -90,3 +90,11 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.form-error {
+  font-size: 0.875rem;
+  color: #b91c1c;
+  background-color: #fee2e2;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-md);
+}

@@ -1,0 +1,44 @@
+/* src/styles/badges.css: selos compartilhados entre telas */
+.badge-priority,
+.badge-status {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.priority-baixa {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+.priority-media {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+.priority-alta {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+.priority-urgente {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-aberto {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+.status-em_andamento {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+.status-aguardando {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+.status-resolvido {
+  background-color: #dcfce7;
+  color: #15803d;
+}
