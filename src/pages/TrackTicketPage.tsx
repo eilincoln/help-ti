@@ -28,9 +28,13 @@ export function TrackTicketPage() {
     setResult(null);
 
     try {
-      const ticket = await fetchPublicTicketStatus(protocol, firstName);
-      if (ticket) {
-        setResult(ticket);
+      const lookup = await fetchPublicTicketStatus(protocol, firstName);
+      if (lookup.kind === "found") {
+        setResult(lookup.ticket);
+      } else if (lookup.kind === "blocked") {
+        setErrorMessage(
+          "Muitas tentativas para este protocolo. Aguarde 15 minutos e tente de novo.",
+        );
       } else {
         setErrorMessage(
           "Chamado não encontrado. Confira o protocolo e o primeiro nome usado na abertura.",
