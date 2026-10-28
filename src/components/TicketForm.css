@@ -69,12 +69,6 @@
   }
 }
 
-.form-privacy {
-  font-size: 0.8125rem;
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
-
 .submit-btn {
   background-color: var(--color-action);
   color: var(--color-on-action);

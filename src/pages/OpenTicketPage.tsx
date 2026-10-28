@@ -66,6 +66,12 @@ export function OpenTicketPage() {
       <p className="page-link">
         Já abriu um chamado? <a href="/consulta">Acompanhe o andamento</a>
       </p>
+      {/* Nova aba: quem está no meio do formulário não perde o que digitou */}
+      <p className="page-link is-subtle">
+        <a href="/privacidade" target="_blank" rel="noopener">
+          Como usamos seus dados
+        </a>
+      </p>
     </>
   );
 }

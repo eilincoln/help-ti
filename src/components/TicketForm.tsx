@@ -131,14 +131,6 @@ export function TicketForm({
         />
       </div>
 
-      {/* Aviso de privacidade (LGPD): o que coletamos, para quê e quem vê */}
-      <p className="form-privacy">
-        Seu nome, setor e a descrição são usados só para atender este chamado e
-        ficam visíveis apenas para a equipe de TI. A consulta pública mostra só
-        o andamento, nunca seu nome ou a descrição. Para corrigir ou excluir
-        seus dados, fale com o TI.
-      </p>
-
       {/* Botão de Envio */}
       <button type="submit" className="submit-btn" disabled={isLoading}>
         {isLoading ? "Enviando chamado..." : "Registrar Chamado"}

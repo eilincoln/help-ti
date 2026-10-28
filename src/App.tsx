@@ -1,5 +1,6 @@
 // src/App.tsx
 import { OpenTicketPage } from "./pages/OpenTicketPage";
+import { PrivacyPage } from "./pages/PrivacyPage";
 import { StaffPage } from "./pages/StaffPage";
 import { TrackTicketPage } from "./pages/TrackTicketPage";
 
@@ -8,6 +9,8 @@ import { TrackTicketPage } from "./pages/TrackTicketPage";
 const path = window.location.pathname;
 const isStaffArea = path.startsWith("/painel");
 const isTrackArea = path.startsWith("/consulta");
+const isPrivacyArea = path.startsWith("/privacidade");
+const isOpenArea = !isStaffArea && !isTrackArea && !isPrivacyArea;
 
 // Topo de cada página: etiqueta + título + texto, no padrão do portfólio
 const PAGE_HERO = isStaffArea
@@ -18,15 +21,22 @@ const PAGE_HERO = isStaffArea
         title: "Como está o seu chamado?",
         lead: "Informe o protocolo e o primeiro nome usado na abertura.",
       }
-    : {
-        eyebrow: "suporte de TI",
-        title: "Como o TI pode ajudar?",
-        lead: "Conte o que está acontecendo. Você recebe um protocolo para acompanhar o atendimento.",
-      };
+    : isPrivacyArea
+      ? {
+          eyebrow: "privacidade",
+          title: "Como usamos seus dados",
+          lead: "O mínimo necessário para resolver o seu chamado.",
+        }
+      : {
+          eyebrow: "suporte de TI",
+          title: "Como o TI pode ajudar?",
+          lead: "Conte o que está acontecendo. Você recebe um protocolo para acompanhar o atendimento.",
+        };
 
 function CurrentPage() {
   if (isStaffArea) return <StaffPage />;
   if (isTrackArea) return <TrackTicketPage />;
+  if (isPrivacyArea) return <PrivacyPage />;
   return <OpenTicketPage />;
 }
 
@@ -47,7 +57,7 @@ export function App(): React.ReactElement {
             <nav className="topbar-nav" aria-label="Principal">
               <ul>
                 <li>
-                  <a href="/" aria-current={!isTrackArea ? "page" : undefined}>
+                  <a href="/" aria-current={isOpenArea ? "page" : undefined}>
                     Abrir chamado
                   </a>
                 </li>
