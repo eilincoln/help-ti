@@ -11,6 +11,16 @@ O colaborador abre um chamado **sem precisar de login**, recebe um protocolo e a
 
 A instância em produção é interna e guarda dados reais dos colaboradores, por isso não é aberta ao público. Para mostrar o sistema funcionando, o vídeo e os prints usam apenas **dados fictícios**.
 
+- **Vídeo no YouTube:** [https://youtu.be/eemmh7O4N1Y](https://youtu.be/eemmh7O4N1Y)
+
+<div align="center">
+  <a href="https://youtu.be/eemmh7O4N1Y">
+    <img src="https://img.youtube.com/vi/eemmh7O4N1Y/maxresdefault.jpg" alt="Assistir ao vídeo de demonstração do HelpTI no YouTube" width="80%">
+  </a>
+  <br>
+  <sub>▶️ Clique na imagem para assistir à demonstração completa</sub>
+</div>
+
 ---
 
 ## 🚀 Stack Tecnológica e Decisões de Arquitetura
