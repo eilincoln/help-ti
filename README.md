@@ -21,6 +21,50 @@ A instância em produção é interna e guarda dados reais dos colaboradores, po
   <sub>▶️ Clique na imagem para assistir à demonstração completa</sub>
 </div>
 
+### 🙋 Área do colaborador
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="60%">
+        <b>💻 Desktop</b><br><br>
+        <img src="./docs/readme/desktop-abrir-chamado.jpg" alt="Formulário de abertura de chamado no desktop" width="100%"><br><br>
+        <img src="./docs/readme/desktop-sucesso.jpg" alt="Tela de sucesso com o protocolo e o botão do WhatsApp" width="100%"><br><br>
+        <img src="./docs/readme/desktop-consulta.jpg" alt="Consulta pública do chamado com as notas públicas do técnico" width="100%">
+      </td>
+      <td align="center" width="40%">
+        <b>📱 Mobile</b><br><br>
+        <img src="./docs/readme/mobile-abrir-chamado.jpg" alt="Formulário de abertura de chamado no celular" width="100%"><br><br>
+        <img src="./docs/readme/mobile-consulta.jpg" alt="Consulta do chamado no celular" width="100%">
+      </td>
+    </tr>
+  </table>
+</div>
+
+### 🛠️ Área do técnico
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <b>Fila de chamados</b><br><br>
+        <img src="./docs/readme/desktop-painel.jpg" alt="Painel do técnico com a fila de chamados" width="100%">
+      </td>
+      <td align="center" width="50%">
+        <b>Resultados (só números, sem dados pessoais)</b><br><br>
+        <img src="./docs/readme/desktop-resultados.jpg" alt="Aba de resultados com métricas consolidadas" width="100%">
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <b>Notas públicas e internas</b><br><br>
+        <img src="./docs/readme/desktop-notas.jpg" alt="Chamado com uma nota marcada como Interna, que não aparece na consulta pública" width="80%"><br>
+        <sub>A nota marcada como <b>Interna</b> não aparece na consulta do colaborador (compare com a tela de consulta acima).</sub>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ---
 
 ## 🚀 Stack Tecnológica e Decisões de Arquitetura
@@ -76,6 +120,7 @@ supabase/
   seed/demo.sql            chamados fictícios para demonstração
   seed/demo_remove.sql     remove só os chamados fictícios
 public/fonts/              fontes locais em woff2
+docs/readme/               prints usados neste README
 vercel.json                rewrite de SPA
 ```
 
